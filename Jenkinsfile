@@ -4,7 +4,6 @@ pipeline {
     environment {
         REPOSITORY = "https://github.com/ZhiTingXin/demo.git"
         SERVICE_DIR = "demo"
-        MAVEN_HOME = "/usr/share/maven/bin"
     }
     stages {
         stage('pull code') {
@@ -25,7 +24,7 @@ pipeline {
                 echo "begin pkg"
                 dir(SERVICE_DIR){
                     sh "ls -l"
-                    sh "${MAVEN_HOME}/mvn -U -am clean package"
+                    sh "mvn -U -am clean package"
                 }
             }
         }
