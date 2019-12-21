@@ -34,7 +34,6 @@ pipeline {
                 echo "begin build image with docker"
                 dir(SERVICE_DIR){
                     sh "ls -l"
-                    sh "image = ${SERVICE_DIR}":"${build_tag}"
                     sh "docker build -t ${SERVICE_DIR}:${build_tag} ."
                 }
             }
@@ -44,7 +43,7 @@ pipeline {
                 echo "run container"
                 sh "docker images"
                 sh "docker kill hello"
-                sh "docker run --name hello -d -v /opt/jar/springBootDocker/logs:/log -p 8080:8080 ${image}"
+                sh "docker run --name hello -d -v /opt/jar/springBootDocker/logs:/log -p 8088:8080 ${SERVICE_DIR}:${build_tag}"
             }
         }
     }
