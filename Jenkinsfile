@@ -1,6 +1,11 @@
 #!/groovy
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'maven:3-alpine' 
+            args '-v /root/.m2:/root/.m2' 
+        }
+    }
     environment {
         REPOSITORY = "https://github.com/ZhiTingXin/demo.git"
         SERVICE_DIR = "demo"
