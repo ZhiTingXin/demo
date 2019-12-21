@@ -34,7 +34,7 @@ pipeline {
                 echo "begin build image with docker"
                 dir(SERVICE_DIR){
                     sh "ls -l"
-                    image = sh(${SERVICE_DIR}+":"+${build_tag})
+                    image = ${SERVICE_DIR}":"${build_tag}
                     sh "docker build -t ${SERVICE_DIR}:${build_tag} ."
                 }
             }
