@@ -27,21 +27,18 @@ pipeline {
         stage('build maven') {
             steps {
                 echo "begin pkg"
-                dir(SERVICE_DIR){
-                    sh "ls -a"
-                    sh "mvn -v"
-                    sh "mvn -UX -am clean package"
-                }
+                sh "ls -a"
+                sh "mvn -v"
+                sh "mvn -UX -am clean package"
+                
             }
         }
 
         stage('build docker') {
             steps {
                 echo "begin build image with docker"
-                dir(SERVICE_DIR){
-                    sh "ls -l"
-                    sh "docker build -t ${SERVICE_DIR}:${build_tag} ."
-                }
+                sh "ls -l"
+                sh "docker build -t ${SERVICE_DIR}:${build_tag} ."
             }
         }
         stage('deploy'){
@@ -49,7 +46,7 @@ pipeline {
                 echo "run container"
                 sh "docker images"
                 sh "docker kill hello"
-                sh "docker run --name hello -d -v /opt/jar/springBootDocker/logs:/log -p 8088:8080 ${SERVICE_DIR}:${build_tag}"
+                sh "docker run --name hello -d -v /home/jenkins/springBootDocker/logs:/log -p 8088:8080 ${SERVICE_DIR}:${build_tag}"
             }
         }
     }
