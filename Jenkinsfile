@@ -28,9 +28,9 @@ pipeline {
             steps {
                 echo "begin pkg"
                 dir(SERVICE_DIR){
-                    sh "ls -l"
+                    sh "ls -a"
                     sh "mvn -v"
-                    sh "mvn -U -am clean package"
+                    sh "mvn -UX -am clean package"
                 }
             }
         }
