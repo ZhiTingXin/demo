@@ -1,11 +1,6 @@
 #!/groovy
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.6.3' 
-            args '-v /root/.m2:/root/.m2' 
-        }
-    }
+    agent any
     environment {
         REPOSITORY = "https://github.com/ZhiTingXin/demo.git"
         SERVICE_DIR = "demo"
@@ -29,6 +24,7 @@ pipeline {
                 echo "begin pkg"
                 dir(SERVICE_DIR){
                     sh "ls -l"
+                    sh "mvn -v"
                     sh "mvn -U -am clean package"
                 }
             }
