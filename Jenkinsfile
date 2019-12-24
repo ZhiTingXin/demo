@@ -21,7 +21,9 @@ pipeline {
             }
         }
         stage('init') {
-            def mvnHome = tool name: 'Maven', type: 'maven'
+            steps{
+                def mvnHome = tool name: 'Maven', type: 'maven'
+            }
         }
 
         stage('build maven') {
