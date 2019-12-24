@@ -1,4 +1,4 @@
-#!/groovy
+#!/bin/bash
 pipeline {
     agent{
         docker{
