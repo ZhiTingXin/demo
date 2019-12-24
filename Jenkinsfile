@@ -44,7 +44,6 @@ pipeline {
             steps {
                 echo "run container"
                 sh "docker images"
-                sh "docker kill hello"
                 sh "docker run --name hello -d -v /home/jenkins/springBootDocker/logs:/log -p 8088:8080 ${SERVICE_DIR}:${build_tag}"
             }
         }
