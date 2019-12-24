@@ -1,7 +1,8 @@
 #!/bin/bash
 pipeline {
-    agent{
-        label 'master'
+    agent any
+    tools {
+    maven 'Maven'
     }
     environment {
         REPOSITORY = "https://github.com/ZhiTingXin/demo.git"
@@ -20,11 +21,7 @@ pipeline {
                 }
             }
         }
-        stage('init') {
-            steps{
-                def mvnHome = tool name: 'Maven', type: 'maven'
-            }
-        }
+       
 
         stage('build maven') {
             steps {
