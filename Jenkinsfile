@@ -20,13 +20,16 @@ pipeline {
                 }
             }
         }
+        stage('init') {
+            def mvnHome = tool name: 'Maven', type: 'maven'
+        }
 
         stage('build maven') {
             steps {
                 echo "begin pkg"
                 sh "ls -a"
-                sh "mvn -v"
-                sh "mvn -U -am clean package"
+                sh "${mvnHome}/bin/mvn -v"
+                sh "${mvnHome}/bin/mvn -U -am clean package"
                 
             }
         }
