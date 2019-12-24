@@ -27,8 +27,8 @@ pipeline {
             steps {
                 echo "begin pkg"
                 sh "ls -a"
-                sh "${mvnHome}/bin/mvn -v"
-                sh "${mvnHome}/bin/mvn -U -am clean package"
+                sh "mvn -v"
+                sh "mvn -U -am clean package"
                 
             }
         }
