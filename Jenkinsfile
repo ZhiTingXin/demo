@@ -26,7 +26,7 @@ pipeline {
         stage('build maven') {
             steps {
                 echo "begin pkg"
-                sh "mvn sonar:sonar -Dsonar.host.url=http://172.17.0.7:9000 -Dsonar.login=ea73c1fc82c1ec062f7e9ee2bb999a00c17f02b9"
+                sh "mvn sonar:sonar -Dsonar.host.url=http://172.17.0.5:9000 -Dsonar.login=ea73c1fc82c1ec062f7e9ee2bb999a00c17f02b9"
                 sh "ls -a"
                 sh "mvn -v"
                 sh "mvn -U -am clean package"
